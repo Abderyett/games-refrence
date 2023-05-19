@@ -5,24 +5,25 @@ function App() {
 	return (
 		<>
 			<Grid
-				gridTemplateAreas={{
+				w='75%'
+				templateAreas={{
 					base: `"nav" "main" "footer"`,
-					lg: `"nav nav " "aside main" "footer footer" `,
+					lg: `"nav nav" "aside main" "footer footer"`,
 				}}>
-				<GridItem pl='2' area={'nav'}>
+				<GridItem area={'nav'}>
 					<Navbar />
 				</GridItem>
 
 				<Show above='lg'>
-					<GridItem pl='2' bg='pink.300' area={'aside'}>
+					<GridItem pl='2' area={'aside'}>
 						aside
 					</GridItem>
 				</Show>
-				<GridItem pl='2' bg='green.300' area={'main'}>
+				<GridItem pl='2' area={'main'}>
 					main
 				</GridItem>
-				<GridItem pl='2' bg='blue.300' area={'footer'}>
-					footer
+				<GridItem pl='2' area={'footer'}>
+					Footer
 				</GridItem>
 			</Grid>
 		</>
