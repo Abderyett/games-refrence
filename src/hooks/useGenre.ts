@@ -3,21 +3,18 @@ import apiClient from '../services/api-client';
 import { CanceledError } from 'axios';
 import { Platform } from '../components/GameCard';
 
-export interface Games {
+export interface Genre {
 	id: number;
 	name: string;
-	background_image: string;
-	parent_platforms: { platform: Platform }[];
-	metacritic: number;
 }
 
-interface FetchGamesResponse {
+interface FetchGenreResponse {
 	count: number;
-	results: Games[];
+	results: Genre[];
 }
 
-const useGames = () => {
-	const [games, setGames] = useState<Games[]>([]);
+const useGenre = () => {
+	const [genres, setGenres] = useState<Genre[]>([]);
 	const [error, setError] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -26,9 +23,9 @@ const useGames = () => {
 		const signal = controller.signal;
 		setIsLoading(true);
 		apiClient
-			.get<FetchGamesResponse>('/games', { signal })
+			.get<FetchGenreResponse>('/genres', { signal })
 			.then((res) => {
-				setGames(res.data.results);
+				setGenres(res.data.results);
 				setIsLoading(false);
 			})
 			.catch((err) => {
@@ -42,7 +39,7 @@ const useGames = () => {
 		};
 	}, []);
 
-	return { error, games, isLoading };
+	return { error, genres, isLoading };
 };
 
-export default useGames;
+export default useGenre;
