@@ -5,7 +5,7 @@ import GenreSkaleton from './GenreSkaleton';
 
 interface Props {
 	selectGenreHandler: (genre: Genre) => void;
-	selectedGenre: Genre;
+	selectedGenre: Genre | null;
 }
 
 const GenreList = ({ selectedGenre, selectGenreHandler }: Props) => {
