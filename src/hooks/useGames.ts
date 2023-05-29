@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import apiClient from '../services/api-client';
-import { CanceledError } from 'axios';
 import { Platform } from '../components/GameCard';
 import UseData from './useData';
 import { Genre } from './useGenre';
@@ -13,9 +10,14 @@ export interface Games {
 	metacritic: number;
 }
 
-const useGames = (selectedGenre: Genre | null) =>
-	UseData<Games>('/games', { params: { genres: selectedGenre?.id } }, [
-		selectedGenre?.id,
-	]);
+const useGames = (
+	selectedGenre: Genre | null,
+	selectedPlatform: Platform | null
+) =>
+	UseData<Games>(
+		'/games',
+		{ params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+		[selectedGenre?.id, selectedPlatform?.id]
+	);
 
 export default useGames;
