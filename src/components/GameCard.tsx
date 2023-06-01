@@ -7,6 +7,7 @@ import getCroppedImage from './imageUrl';
 export interface Platform {
 	id: number;
 	name: string;
+	slug: string;
 }
 interface Props {
 	game: Games;
